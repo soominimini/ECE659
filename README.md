@@ -14,9 +14,11 @@ The system includes a real-time monitoring system, continuously collecting and p
 <li>Scheduling: The sensors transmit data to a central processing unit (CPU) using an exponential backoff algorithm, which manages when the sensors send the data by introducing randomized intervals between transmissions.</li>
 </ul>
 
-<video width="320" height="240" controls>
-  <source src="https://github.com/soominimini/ECE659/blob/main/sensor_test.mp4" type="video/mp4">
-</video>
+
+
+https://github.com/user-attachments/assets/4318b670-b15a-40ee-ad61-5208ed2e7f4b
+
+
 <h3>Data Transmission and Processing</h3>
 <ul>
 <li>Data Transmission: Sensor data (including sensor ID, values, and reliability weights) are periodically transmitted to the equipment's CPU. Data is aggregated in categorized maps (temperature, vibration, etc.).
