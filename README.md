@@ -15,7 +15,7 @@ The system includes a real-time monitoring system, continuously collecting and p
 </ul>
 
 <video width="320" height="240" controls>
-  <source src="movie.mp4" type="video/mp4">
+  <source src="https://github.com/soominimini/ECE659/blob/main/sensor_test.mp4" type="video/mp4">
 </video>
 <h3>Data Transmission and Processing</h3>
 <ul>
