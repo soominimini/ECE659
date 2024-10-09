@@ -1,0 +1,489 @@
+file 468584 1721322201                                          
+version 3
+run General-0-20240718-13:03:14-8896
+attr configname General
+attr datetime 20240718-13:03:14
+attr datetimef 20240718-130314
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network sensor_project2.SmartFactory
+attr processid 8896
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config network sensor_project2.SmartFactory
+config sim-time-limit 100s
+config seed-set 0
+config record-eventlog true
+config output-scalar-file results.sca
+config output-vector-file results.vec
+config **.vector-recording true
+config *.cli.numApps 1
+config *.cli.app[0].typename PingApp
+config *.cli.app[0].destAddr "\"server\""
+config *.cli.app[0].startTime 0s
+config *.server*.wlan[*].radio.antenna.typename DipoleAntenna
+config *.server*.wlan[*].radio.antenna.length 20cm
+
+vector 0 SmartFactory.server.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 2 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 3 SmartFactory.server.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 4 SmartFactory.server.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 5 SmartFactory.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 6 SmartFactory.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 7 SmartFactory.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 8 SmartFactory.cli.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 9 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 10 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 11 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 12 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 13 SmartFactory.cli.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 14 SmartFactory.cli.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 15 SmartFactory.cli.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 16 SmartFactory.server.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 17 SmartFactory.server.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 18 SmartFactory.cli.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 19 SmartFactory.cli.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 20 SmartFactory.server.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 21 SmartFactory.server.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 22 SmartFactory.cli.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 23 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 24 SmartFactory.server.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 25 SmartFactory.cli.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 26 SmartFactory.cli.app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping tx seq"
+vector 27 SmartFactory.cli.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 28 SmartFactory.cli.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 29 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 30 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 31 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 32 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 33 SmartFactory.cli.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 34 SmartFactory.cli.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 35 SmartFactory.cli.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 36 SmartFactory.cli.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 37 SmartFactory.cli.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 38 SmartFactory.cli.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 39 SmartFactory.cli.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 40 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 41 SmartFactory.server.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 42 SmartFactory.server.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 43 SmartFactory.server.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 44 SmartFactory.server.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 45 SmartFactory.server.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 46 SmartFactory.server.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 47 SmartFactory.server.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 48 SmartFactory.server.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 49 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 50 SmartFactory.server.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 51 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 52 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 53 SmartFactory.server.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 54 SmartFactory.server.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 55 SmartFactory.server.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 56 SmartFactory.server.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 57 SmartFactory.server.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 58 SmartFactory.server.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 59 SmartFactory.server.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 60 SmartFactory.cli.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 61 SmartFactory.cli.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 62 SmartFactory.cli.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 63 SmartFactory.cli.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 64 SmartFactory.cli.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 65 SmartFactory.cli.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 66 SmartFactory.server.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 67 SmartFactory.server.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 68 SmartFactory.cli.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 69 SmartFactory.cli.app[0] pingRxSeq:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping rx seq"
+vector 70 SmartFactory.cli.app[0] rtt:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping round-trip time"
+attr unit s
+vector 71 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 72 SmartFactory.cli.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 73 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 74 SmartFactory.server.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+0	18733 5213 0 7003 0 99.000859643784 204 0 1 101 101
+1	23946 5241 0 6983 0 99.000744547928 207 0 1 101 101
+2	29187 5443 0 6983 0 99.000744547928 207 0 960 96512 92422144
+3	34630 5213 0 7003 0 99.000859643784 204 0 1 101 101
+4	39843 10364 0 6982 0 99.000744547928 404 0 1 201 201
+5	50207 9 0 0 0 0 1 0 0 0 0
+6	50216 9 0 0 0 0 1 0 0 0 0
+7	50225 9 0 0 0 0 1 0 0 0 0
+8	50234 3925 0 7029 0 100 205 0 1 102 102
+9	54159 2671 0 7029 0 100 209 0 1 102 102
+10	56830 3084 0 7029 0 100 209 0 960 97472 93343744
+11	59914 4130 0 7029 0 100 205 0 1 102 102
+12	64044 2898 0 7028 0 100 208 0 1 103 103
+13	66942 10 0 0 0 0 1 0 0 0 0
+14	66952 10 0 0 0 0 1 0 0 0 0
+15	66962 10 0 0 0 0 1 0 0 0 0
+16	66972 10778 0 6988 0 99.000814547928 405 0 3 1007 2617
+17	77750 10 0 0 0 0 1 0 0 0 0
+18	77760 8846 0 7030 0 100 408 0 3 1015 2639
+19	86606 10 0 0 0 0 1 0 0 0 0
+20	86616 21552 0 7002 0 99.000859643784 807 0 3 1010 2222
+21	108168 43106 0 7002 0 99.000859643784 1614 0 2 1004 1808
+22	151274 19574 0 7030 0 100 808 0 3 1007 2213
+23	170848 35494 0 7030 0 100 1624 0 2 414 826
+24	206342 11 0 0 0 0 1 31 31 31 961
+25	206353 11 0 0 0 0 1 31 31 31 961
+26	206364 1480 1 7024 0 100 101 0 100 5050 338350
+27	207844 11 3 3 0 0 1 28 28 28 784
+28	207855 1514 5 7027 0 100 102 36 92 9328 856160
+29	209369 1616 5 7027 0 100 102 512 960 97472 93343744
+30	210985 1471 5 7027 0 100 102 0 31 1372 26518
+31	212456 1431 7 7029 0.00057 100 102 0 0.00057 0.000784 3.70696e-07
+32	213887 1622 7 7029 0.00057 100 102 512 960 97472 93343744
+33	215509 5538 7 7029 0.00057 100 203 24000000 24000000 4872000000 1.16928e+17
+34	221047 4421 7 7029 0.00057 100 203 14 120 13598 1478292
+35	225468 17632 8 7031 0.00057 100 810 0 2 811 1217
+36	243100 5000 11 7000 0.00062 99.000859095856 202 14 120 13478 1463892
+37	248100 18 11 11 0.00062 0.00062 1 64 64 64 4096
+38	248118 18 11 11 0.00062 0.00062 1 64 64 64 4096
+39	248136 5000 11 7000 0.00062 99.000859095856 202 14 120 13478 1463892
+40	253136 3996 11 6981 0.00062 99.000115095856 101 5e-05 0.000115095856 0.0115595856 1.3272056068373e-06
+41	257132 5699 14 7003 0.000620547928 99.000859643784 202 14 120 13478 1463892
+42	262831 5699 14 7003 0.000620547928 99.000859643784 202 14 120 13478 1463892
+43	268530 25 14 14 0.000620547928 0.000620547928 1 64 64 64 4096
+44	268555 25 14 14 0.000620547928 0.000620547928 1 64 64 64 4096
+45	268580 5699 14 7003 0.000620547928 99.000859643784 202 14 120 13478 1463892
+46	274279 2800 14 6966 0.000620547928 99.000070547928 101 36 92 9236 847696
+47	277079 25 16 16 0.000620547928 0.000620547928 1 28 28 28 784
+48	277104 2800 18 6972 0.000620547928 99.000070547928 101 36 92 9236 847696
+49	279904 2901 18 6972 0.000620547928 99.000070547928 101 512 960 96512 92422144
+50	282805 2774 18 6972 0.000620547928 99.000070547928 101 0 31 1570 32334
+51	285579 3399 20 6983 0.000690547928 99.000744547928 101 7e-05 0.000714 0.04085 1.972114e-05
+52	288978 2901 20 6983 0.000690547928 99.000744547928 101 512 960 96512 92422144
+53	291879 6781 20 6983 0.000690547928 99.000744547928 201 24000000 24000000 4824000000 1.15776e+17
+54	298660 5675 20 6983 0.000690547928 99.000744547928 201 14 120 13464 1463696
+55	304335 21496 21 6988 0.000690547928 99.000814547928 804 0 2 804 1206
+56	325831 5675 24 6987 0.000740547928 99.000814547928 201 14 120 13464 1463696
+57	331506 5675 24 6987 0.000740547928 99.000814547928 201 14 120 13464 1463696
+58	337181 5675 24 6987 0.000740547928 99.000814547928 201 14 120 13464 1463696
+59	342856 8703 24 6999 0.000740547928 99.000858547928 303 0 4.4e-05 0.004444 1.95536e-07
+60	351559 5675 27 6990 0.000741095856 99.000815095856 201 14 120 13464 1463696
+61	357234 5675 27 6990 0.000741095856 99.000815095856 201 14 120 13464 1463696
+62	362909 5675 27 6990 0.000741095856 99.000815095856 201 14 120 13464 1463696
+63	368584 5675 27 6990 0.000741095856 99.000815095856 201 14 120 13464 1463696
+64	374259 2800 27 6990 0.000741095856 99.000815095856 101 36 92 9236 847696
+65	377059 4982 37 7000 0.000785095856 99.000859095856 201 14 120 13414 1459796
+66	382041 5674 40 7003 0.000785643784 99.000859643784 201 14 120 13414 1459796
+67	387715 4010 40 7003 0.000785643784 99.000859643784 101 9.5095856e-05 0.000115095856 0.011604681456 1.3337488286656e-06
+68	391725 6645 46 6977 0.001025095856 99.000114 300 0 4.4e-05 0.0044 1.936e-07
+69	398370 2765 76 6993 0.001330191712 99.000815095856 100 0 99 4950 328350
+70	401135 3975 76 6993 0.001330191712 99.000815095856 100 0.000235095856 0.001330191712 0.055844681456 3.4843535162882e-05
+71	405110 15863 97 7027 0.1 100 1000 0 14720 965120 9340518400
+72	420973 15863 99 7029 0.1 100 1000 0 14720 965120 9340518400
+73	436836 15873 112 7032 0.1 100 1000 0 14720 965120 9340518400
+74	452709 15873 123 7032 0.1 100 1000 0 14720 965120 9340518400
+
