@@ -35,3 +35,10 @@ Prediction: The trained model predicts TTF (Time-to-Failure) for each piece of e
 <li><h3>Real-Time Monitoring</h3>
 Local and Online Monitoring: The system continuously collects data in real-time from the OMNeT++ simulation, which is stored in a shared CSV file. A Python script periodically uploads this data to a Google Spreadsheet for real-time updates.
 Anomaly Detection: A Google Colab script fetches this data and performs real-time anomaly detection, identifying any irregular sensor readings that could indicate an impending failure.</li></ul>
+
+
+
+https://github.com/user-attachments/assets/dd59e42c-aa86-46a4-9945-cc832ed5c2ab
+
+
+
